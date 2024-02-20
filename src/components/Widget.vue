@@ -1,26 +1,18 @@
 <script setup>
   import { ref } from 'vue';
   import { reviews } from '@/firebase/db';
-  import { addDoc, serverTimestamp } from 'firebase/firestore'
-  import { useField, useForm } from 'vee-validate'
 
   import Failure from './Info/Failure.vue';
   import Success from './Info/Success.vue';
   import Loader from './Info/Loader.vue';
-  
+  import { addDoc, serverTimestamp } from 'firebase/firestore'
 
   const dialog = ref(true)
   const loader = ref(false);
   const success = ref(false);
   const failure = ref(false);
 
-  const name = useField('name')
-  const phone = useField('phone')
-  const email = useField('email')
-  const rating = useField('rating')
-  const text = useField('text')
-
-  rating.value.value = 5 // Default rating value
+  import { useField, useForm } from 'vee-validate'
 
   const { handleSubmit, handleReset } = useForm({
     validationSchema: {
@@ -47,6 +39,14 @@
     }
   })
 
+  const name = useField('name')
+  const phone = useField('phone')
+  const email = useField('email')
+  const rating = useField('rating')
+  const text = useField('text')
+
+  rating.value.value = 5 // Default value
+
   const submit = handleSubmit(values => {
     Object.assign(values, {createdAt: serverTimestamp()});
 
@@ -63,6 +63,7 @@
         loader.value = false
         failure.value = true
       })
+
   })
 </script>
 
