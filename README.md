@@ -4,7 +4,7 @@
 
 ## 🌐 Проект можна знайти за послианнями у Vercel
 
-- [Monobank Widget Online](https://monobank-widget.vercel.com/)
+- [Monobank Widget Online](https://monobank-widget.vercel.app/)
 
 ## 💿 Завантаження
 
